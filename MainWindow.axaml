@@ -1,0 +1,60 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="300"
+        x:Class="CalcApp.MainWindow"
+        Title="CalcApp"
+        Width="250" Height="300" 
+        MinWidth="250" MinHeight="300"
+        MaxWidth="250" MaxHeight="300">
+
+    <Window.Background>
+        <SolidColorBrush Color="#011111" />
+    </Window.Background>
+    
+    <Grid RowDefinitions="*,Auto,Auto,Auto,Auto,Auto"
+          ColumnDefinitions="*,*,*,*"
+          Margin="10">
+
+        <!-- Display for the result (top right) -->
+        <TextBlock Text="0" x:Name="ResultDisplay"
+                   Grid.Row="0" Grid.ColumnSpan="4"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   FontSize="36"
+                   Foreground="White"
+                   Margin="10,0"
+                   />
+
+        <!-- Row 1: Buttons AC, +/-, %, and / -->
+        <Button Grid.Row="1" Grid.Column="0" Content="AC" Background="#D3D3D3" Foreground="Black" FontSize="20" Click="ClearButton_Click" HorizontalAlignment="Stretch" />
+        <Button Grid.Row="1" Grid.Column="1" Content="+/-" Background="#D3D3D3" Foreground="Black" FontSize="20" Click="OperatorButton_Click" HorizontalAlignment="Stretch" />
+        <Button Grid.Row="1" Grid.Column="2" Content="%" Background="#D3D3D3" Foreground="Black" FontSize="20" Click="OperatorButton_Click" HorizontalAlignment="Stretch" />
+        <Button Grid.Row="1" Grid.Column="3" Content="/" Background="#FFA500" Foreground="White" FontSize="20" Click="OperatorButton_Click" HorizontalAlignment="Stretch" />
+
+        <!-- Row 2: Buttons 7, 8, 9, * -->
+        <Button Grid.Row="2" Grid.Column="0" Content="7" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="2" Grid.Column="1" Content="8" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="2" Grid.Column="2" Content="9" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="*" Background="#FFA500" Foreground="White" FontSize="20"  Click="OperatorButton_Click" HorizontalAlignment="Stretch"/>
+
+        <!-- Row 3: Buttons 4, 5, 6, - -->
+        <Button Grid.Row="3" Grid.Column="0" Content="4" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="3" Grid.Column="1" Content="5" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="3" Grid.Column="2" Content="6" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="3" Grid.Column="3" Content="-" Background="#FFA500" Foreground="White" FontSize="20" Click="OperatorButton_Click" HorizontalAlignment="Stretch"/>
+
+        <!-- Row 4: Buttons 1, 2, 3, + -->
+        <Button Grid.Row="4" Grid.Column="0" Content="1" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="4" Grid.Column="1" Content="2" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="4" Grid.Column="2" Content="3" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="4" Grid.Column="3" Content="+" Background="#FFA500" Foreground="White" FontSize="20" Click="OperatorButton_Click" HorizontalAlignment="Stretch"/>
+
+        <!-- Row 5: Button 0, ., and = -->
+        <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="0" Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="5" Grid.Column="2" Content="." Background="#333333" Foreground="White" FontSize="20" Click="NumberButton_Click" HorizontalAlignment="Stretch"/>
+        <Button Grid.Row="5" Grid.Column="3" Content="=" Background="#FFA500" Foreground="White" FontSize="20" Click="EqualsButton_Click" HorizontalAlignment="Stretch"/>
+        
+    </Grid>
+</Window>
