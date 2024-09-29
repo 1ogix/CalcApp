@@ -1,5 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using System;
 using System.Linq.Expressions;
 
@@ -116,19 +117,13 @@ namespace CalcApp
                         if (secondNumber == 0)
                         {
                             throw new DivideByZeroException();
-                            // // Instead of throwing, handle floating-point division by zero.
-                            // result = firstNumber / secondNumber;
-
-                            // if (double.IsInfinity(result) || double.IsNaN(result))
-                            // {
-                            //     ResultDisplay.Text = "either infinity or NAN";
-                            //     throw new DivideByZeroException();
-                            //     // Manually trigger exception if result is infinity or NaN
-                            // }
                         }
-                        else
+                        result = firstNumber / secondNumber;
+
+                        // Check if the result is Infinity or NaN and handle it accordingly
+                        if (double.IsInfinity(result) || double.IsNaN(result))
                         {
-                            result = firstNumber / secondNumber;
+                            throw new DivideByZeroException();
                         }
                         break;
                     default:
@@ -143,7 +138,11 @@ namespace CalcApp
             catch (DivideByZeroException)
             {
                 // Handle division by zero explicitly
-                ResultDisplay.Text = "Cannot divide by zero";
+                Console.WriteLine("Divide by zero error caught");
+                Dispatcher.UIThread.InvokeAsync(() =>
+                {
+                    ResultDisplay.Text = "Cannot divide by zero";
+                });
             }
             catch (Exception ex)
             {
